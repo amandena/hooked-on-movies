@@ -38,11 +38,21 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header text='Hooked on Movies'/>
       <Search search={search}/>
       <p className='App-intro'>Sharing a few of our favorite movies</p>
-      
+      <div className='movies'>
+        {loading && !errorMessage ? (
+          <span>Loading...</span>
+        ) : errorMessage ? (
+          <div className='errorMessage'>{errorMessage}</div> 
+        ) : (
+          movies.map((movie, index) => (
+            <Movie key={`${index}-${movie.Title}`} movie={movie}/>
+          ))
+        )}
+      </div>
     </div>
   )
 }
