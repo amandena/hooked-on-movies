@@ -20,6 +20,23 @@ function App() {
       })
   },[])
 
+  const search = searchValue => {
+    setLoading(true);
+    setErrorMessage(null);
+
+    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=d681ac61`)
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.Response === "True") {
+          setMovies(data.Search)
+          setLoading(false)
+        } else {
+          setErrorMessage(data.Error)
+          setLoading(false)
+        }
+      })
+  }
+
   return (
     <div className="App">
       App
