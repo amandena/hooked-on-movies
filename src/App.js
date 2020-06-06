@@ -39,10 +39,10 @@ function App() {
 
   return (
     <div className="App">
-      App
-      <Header/>
-      <Search/>
-      <Movie/>
+      <Header text='Hooked on Movies'/>
+      <Search search={search}/>
+      <p className='App-intro'>Sharing a few of our favorite movies</p>
+      
     </div>
   )
 }
